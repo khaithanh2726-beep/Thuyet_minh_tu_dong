@@ -21,10 +21,10 @@ public class SecurityConfig {
             // Phân quyền truy cập API
             .authorizeHttpRequests(auth -> auth
                 // Nhóm 1: Dành cho Swagger UI để test API
-                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                .requestMatchers("/v3/api-docs","/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                 
                 // Nhóm 2: Dành cho Khách du lịch quét mã QR
-                .requestMatchers("/api/qr/**").permitAll()
+                .requestMatchers("/api/qr/**", "/api/auth/**").permitAll()
                 
                 // Nhóm 3: Dành cho Admin và người dùng có quyền
                 .anyRequest().authenticated()
